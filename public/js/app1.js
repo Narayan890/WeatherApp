@@ -67,7 +67,7 @@ const changeTextColour = () => {
 const changeIcon = () => {
     return "fas fa-moon";
 }
-if (time() > 7) {
+if (time() > 6) {
     document.querySelector(".container").style.backgroundColor = changeColour();
     document.querySelector(".container").style.color = changeTextColour();
     document.querySelector(".btn").style.backgroundColor = "white";
@@ -97,14 +97,16 @@ weatherForm.addEventListener("submit", (event) => {
                     weatherIcon.className = "fas fa-cloud-showers-heavy";
                 } else if (data.description == "Clouds") {
                     weatherIcon.className = "fas fa-cloud";
-                } else if (data.description == "clear sky" && time() < 7) {
+                } else if (data.description == "clear sky" && time() < 6) {
                     weatherIcon.className = "fas fa-cloud-sun";
 
-                } else if (data.description == "clear sky" && time() > 7) {
+                } else if (data.description == "clear sky" && time() > 6) {
                     weatherIcon.className = changeIcon();
-                } else {
-                    weatherIcon.className = "fas fa-cloud-sun";
+                } else if (time() > 6) {
+                    weatherIcon.className = "fas fa-cloud-moon";
+
                 }
+
                 locationElement.textContent = data.cityName + "," + data.Country;
                 tempElement.textContent = Math.floor(data.temperature - 273.5) + String.fromCharCode(176);
                 descriptionElement.textContent = data.description.toUpperCase();

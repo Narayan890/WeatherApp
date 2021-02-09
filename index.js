@@ -3,28 +3,21 @@ const path = require("path");
 const express = require("express");
 const app = express();
 
+const fs = require('fs');
 
-const weatherData = require("../utils/weatherData");
-const { response } = require("express");
+const home = fs.readFileSync("index.html", "utf-8");
 
-// setting the port number
+const weatherData = require("./utils/weatherData");
+
 const port = process.env.PORT || 3000;
 
-const publicDirPath = path.join(__dirname, "../public");
+const publicDirPath = path.join(__dirname, "/public");
 
-const viewsPath = path.join(__dirname, "../templates/views");
-
-const partialsPath = path.join(__dirname, "../templates/partials");
-
-app.set("view engine", "hbs");
-app.set("views", viewsPath);
-hbs.registerPartials(partialsPath);
 app.use(express.static(publicDirPath));
 
 app.get("", (req, res) => {
-    res.render("index", {
-        title: "Weather App"
-    })
+    res.write(home);
+    res.end();
 });
 
 
