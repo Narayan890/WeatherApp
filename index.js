@@ -5,7 +5,7 @@ const app = express();
 
 const fs = require('fs');
 
-const home = fs.readFileSync("index.html", "utf-8");
+const home = fs.readFileSync("home.html", "utf-8");
 
 const weatherData = require("./utils/weatherData");
 
