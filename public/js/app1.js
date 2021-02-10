@@ -48,14 +48,8 @@ const getCurrentTime = () => {
 dateElement.textContent = getCurrentday() + " | " + getCurrentTime();
 
 const time = () => {
-    var period = "AM";
     var hours = new Date().getHours();
-    if (hours > 11) {
-        period = "PM";
-        if (hours > 12) hours -= 12;
-    }
     return hours;
-
 }
 const changeColour = () => {
     return "#1C1C1C";
@@ -67,7 +61,7 @@ const changeTextColour = () => {
 const changeIcon = () => {
     return "fas fa-moon";
 }
-if (time() > 6) {
+if (time() > 18) {
     document.querySelector(".container").style.backgroundColor = changeColour();
     document.querySelector(".container").style.color = changeTextColour();
     document.querySelector(".btn").style.backgroundColor = "white";
@@ -97,12 +91,12 @@ weatherForm.addEventListener("submit", (event) => {
                     weatherIcon.className = "fas fa-cloud-showers-heavy";
                 } else if (data.description == "Clouds") {
                     weatherIcon.className = "fas fa-cloud";
-                } else if (data.description == "clear sky" && time() < 6) {
+                } else if (data.description == "clear sky" && time() < 18) {
                     weatherIcon.className = "fas fa-cloud-sun";
 
-                } else if (data.description == "clear sky" && time() > 6) {
+                } else if (data.description == "clear sky" && time() > 18) {
                     weatherIcon.className = changeIcon();
-                } else if (time() > 6) {
+                } else if (time() > 18) {
                     weatherIcon.className = "fas fa-cloud-moon";
 
                 }
