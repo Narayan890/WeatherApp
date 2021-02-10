@@ -9,7 +9,7 @@ const home = fs.readFileSync("home.html", "utf-8");
 
 const weatherData = require("./utils/weatherData");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const publicDirPath = path.join(__dirname, "/public");
 
